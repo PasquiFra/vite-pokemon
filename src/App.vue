@@ -1,19 +1,26 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
+import PokemonList from './components/PokemonList.vue'
+
 
 export default {
   name: "Yu-Gi-Oh",
+  data: () => ({
+  }),
   components: {
-    AppHeader
+    AppHeader, PokemonList
   }
 }
 
 </script>
 
 <template>
-  <AppHeader />
+  <div class="container-fluid">
+    <AppHeader />
+    <PokemonList />
+  </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use './assets/scss/style.scss';
 </style>
