@@ -1,12 +1,19 @@
 <script>
+import AppHeader from './components/AppHeader.vue'
+
 export default {
-  name: "Yu-Gi-Oh"
+  name: "Yu-Gi-Oh",
+  components: {
+    AppHeader
+  }
 }
 
 </script>
 
-<template></template>
+<template>
+  <AppHeader />
+</template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/style.scss';
+@use './assets/scss/style.scss';
 </style>
