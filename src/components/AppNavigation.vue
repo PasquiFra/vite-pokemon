@@ -79,7 +79,8 @@ export default {
                 type: "Steel",
                 img: "public/aron.jpg"
             },
-        ]
+        ],
+        searchText: "",
     }),
 
 
@@ -98,18 +99,20 @@ export default {
 </script>
 
 <template>
-    <nav class="d-flex">
-        <ul class="d-flex">
+    <nav class="d-flex flex-wrap mb-3">
+        <ul class="d-flex pb-4">
             <li role="button" v-for="image in imageTypes" @click="fetchPokemons(image.type)">
                 <img :src="image.img" :alt="image.type">
+                <span class="text-center">{{ image.type }}</span>
             </li>
         </ul>
+        <input class="form-control w-50 my-2" type="text" placeholder="Cerca un pokemon" v-model="searchText">
     </nav>
 </template>
 
 <style lang="scss" scoped>
 nav {
-    height: 25vh;
+    height: 35vh;
     justify-content: center;
 
     ul {
@@ -125,14 +128,14 @@ nav {
 
         box-shadow: 2px 2px goldenrod;
         width: 200px;
-        height: 200px;
+        height: 220px;
 
         flex-shrink: 0;
     }
 
     img {
         text-align: center;
-        height: 100%;
+        height: 90%;
         width: 100%;
 
         background-color: #FFE9B8;
