@@ -5,7 +5,7 @@ import { store } from './data/store';
 import axios from "axios";
 
 export default {
-  name: "Yu-Gi-Oh",
+  name: "Pokemons",
   data: () => ({
     store
   }),
@@ -13,6 +13,12 @@ export default {
     AppNavigation, PokemonList
   },
   methods: {
+    callAxios(endpoint) {
+      axios.get(endpoint).then(res => {
+        store.pokemons = res.data.docs;
+        console.log(store)
+      })
+    },
     FetchPokemons(type) {
       console.log("chiamo...")
 
@@ -20,10 +26,16 @@ export default {
 
       console.log(endpoint)
 
-      axios.get(endpoint).then(res => {
-        store.pokemons = res.data.docs;
-        console.log(store)
-      })
+      this.callAxios(endpoint)
+    },
+    searchFilter(text) {
+      console.log("chiamo...", text)
+
+      const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?q[name]=${text}`;
+
+      console.log(endpoint)
+
+      this.callAxios(endpoint)
     }
 
   }
@@ -39,7 +51,7 @@ export default {
       <h5 class="text-center">Scegli un tipo di Pokemon:</h5>
     </header>
 
-    <AppNavigation @pokemon-type-click="FetchPokemons" />
+    <AppNavigation @pokemon-type-click="FetchPokemons" @submit-search-text="searchFilter()" />
 
     <PokemonList />
 

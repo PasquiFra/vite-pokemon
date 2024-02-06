@@ -84,7 +84,7 @@ export default {
     components: {
         SearchForm
     },
-    emits: ['pokemon-type-click']
+    emits: ['pokemon-type-click', 'submit-search-text']
 };
 </script>
 
@@ -97,7 +97,7 @@ export default {
             </li>
         </ul>
 
-        <SearchForm />
+        <SearchForm placeholder="Cerca un pokemon..." @submit-search-text="$emit('submit-search-text', lowercasedText)" />
 
     </nav>
 </template>
