@@ -1,5 +1,5 @@
 <script>
-import Navigation from './components/AppHeader.vue'
+import AppNavigation from './components/AppNavigation.vue'
 import PokemonList from './components/PokemonList.vue'
 
 
@@ -8,7 +8,7 @@ export default {
   data: () => ({
   }),
   components: {
-    Navigation, PokemonList
+    AppNavigation, PokemonList
   }
 }
 
@@ -22,7 +22,7 @@ export default {
       <h5 class="text-center">Scegli un tipo di Pokemon:</h5>
     </header>
 
-    <Navigation />
+    <AppNavigation />
     <PokemonList />
 
   </div>

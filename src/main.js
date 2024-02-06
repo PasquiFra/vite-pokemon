@@ -1,4 +1,4 @@
-import '@fontsource-variable/montserrat';
+import "@fontsource-variable/montserrat";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { createApp } from 'vue'
