@@ -6,7 +6,7 @@ import PokemonCard from "./PokemonCard.vue";
 export default {
     name: "PokemonList",
     data: () => ({
-        pokemons: store.pokemons
+        store
     }),
     components: {
         PokemonCard
@@ -19,7 +19,7 @@ export default {
 <template>
     <section>
         <ul class="row row-cols-md-5 g-3">
-            <li class="col" v-for="pokemon in pokemons" :key="pokemon.id">
+            <li class="col" v-for="pokemon in store.pokemons" :key="pokemon.id">
                 <PokemonCard :name="pokemon.name" :image="pokemon.imageUrl" :type1="pokemon.type1" :type2="pokemon.type2"
                     :ability="pokemon.ability1" :life="pokemon.hp" :atk="pokemon.atk" :def="pokemon.def"
                     :serial="pokemon.serial" />

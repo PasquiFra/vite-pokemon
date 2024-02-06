@@ -7,9 +7,9 @@ export default {
         type1: String,
         type2: String,
         ability: String,
-        life: String,
-        def: String,
-        atk: String,
+        life: Number,
+        def: Number,
+        atk: Number,
         serial: Number,
     }
 }
