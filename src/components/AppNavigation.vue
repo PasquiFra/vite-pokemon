@@ -1,112 +1,104 @@
 <script>
-import { store } from '../data/store';
 
-import axios from "axios";
+import SearchForm from '../components/SearchForm.vue'
+
 
 export default {
-    name: "AppHeader",
+    name: "AppNavigation",
     data: () => ({
         imageTypes: [
             {
                 type: "Grass",
-                img: "public/bulbasaur.jpg"
+                img: "/bulbasaur.jpg"
             },
             {
                 type: "Fire",
-                img: "public/charmender.jpg"
+                img: "/charmender.jpg"
             },
             {
                 type: "Electric",
-                img: "public/pikachu.jpg"
+                img: "/pikachu.jpg"
             },
             {
                 type: "Water",
-                img: "public/squirtle.jpg"
+                img: "/squirtle.jpg"
             },
             {
                 type: "Bug",
-                img: "public/caterpie.jpg"
+                img: "/caterpie.jpg"
             },
             {
                 type: "Dark",
-                img: "public/rattata.jpg"
+                img: "/rattata.jpg"
             },
             {
                 type: "Dragon",
-                img: "public/dragonite.jpg"
+                img: "/dragonite.jpg"
             },
             {
                 type: "Fairy",
-                img: "public/clefairy.jpg"
+                img: "/clefairy.jpg"
             },
             {
                 type: "Fighting",
-                img: "public/machop.jpg"
+                img: "/machop.jpg"
             },
             {
                 type: "Flying",
-                img: "public/corvisquire.jpg"
+                img: "/corvisquire.jpg"
             },
             {
                 type: "Ghost",
-                img: "public/gengar.jpg"
+                img: "/gengar.jpg"
             },
             {
                 type: "Ground",
-                img: "public/dugtrio.jpg"
+                img: "/dugtrio.jpg"
             },
             {
                 type: "Ice",
-                img: "public/articuno.jpg"
+                img: "/articuno.jpg"
             },
             {
                 type: "Normal",
-                img: "public/pidgey.jpg"
+                img: "/pidgey.jpg"
             },
             {
                 type: "Poison",
-                img: "public/nidoran-m.jpg"
+                img: "/nidoran-m.jpg"
             },
             {
                 type: "Psychic",
-                img: "public/hypno.jpg"
+                img: "/hypno.jpg"
             },
             {
                 type: "Rock",
-                img: "public/onix.jpg"
+                img: "/onix.jpg"
             },
             {
                 type: "Steel",
-                img: "public/aron.jpg"
+                img: "/aron.jpg"
             },
-        ],
-        searchText: "",
+        ]
     }),
-
-
-    methods: {
-        fetchPokemons(type) {
-            const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?eq[type1]=${type}&per=40`;
-            console.log(endpoint)
-
-            axios.get(endpoint).then(res => {
-                store.pokemons = res.data.docs;
-                console.log(store)
-            })
-        }
-    }
-}
+    components: {
+        SearchForm
+    },
+    emits: ['pokemon-type-click']
+};
 </script>
 
 <template>
     <nav class="d-flex flex-wrap mb-3">
         <ul class="d-flex pb-4">
-            <li role="button" v-for="image in imageTypes" @click="fetchPokemons(image.type)">
+            <li role="button" v-for="image in imageTypes" @click="$emit('pokemon-type-click', image.type)">
                 <img :src="image.img" :alt="image.type">
                 <span class="text-center">{{ image.type }}</span>
             </li>
         </ul>
-        <input class="form-control w-50 my-2" type="text" placeholder="Cerca un pokemon" v-model="searchText">
+
+        <SearchForm />
+
     </nav>
 </template>
 
