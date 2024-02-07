@@ -1,7 +1,7 @@
 <script>
 
 import SearchForm from '../components/SearchForm.vue'
-
+import SelectList from '../components/SelectList.vue'
 
 export default {
     name: "AppNavigation",
@@ -82,22 +82,25 @@ export default {
         ]
     }),
     components: {
-        SearchForm
+        SearchForm, SelectList
     },
-    emits: ['pokemon-type-click', 'submit-search-text']
+    emits: ['submit-search-text', 'option-change']
 };
 </script>
 
 <template>
     <nav class="d-flex flex-wrap mb-3">
+
+        <SelectList default-label="Tutti i tipi" :options="imageTypes" @option-change="$emit('option-change', $event)" />
+
         <ul class="d-flex pb-4">
-            <li role="button" v-for="image in imageTypes" @click="$emit('pokemon-type-click', image.type)">
+            <li role="button" v-for="image in imageTypes" @click="$emit('option-change', image.type)">
                 <img :src="image.img" :alt="image.type">
                 <span class="text-center">{{ image.type }}</span>
             </li>
         </ul>
 
-        <SearchForm placeholder="Cerca un pokemon..." @submit-search-text="$emit('submit-search-text', lowercasedText)" />
+        <SearchForm placeholder="Cerca un pokemon..." @submit-search-text="$emit('submit-search-text', $event)" />
 
     </nav>
 </template>

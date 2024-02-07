@@ -31,7 +31,7 @@ export default {
     searchFilter(text) {
       console.log("chiamo...", text)
 
-      const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?q[name]=${text}`;
+      const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?q[name]=${text}&per=20`;
 
       console.log(endpoint)
 
@@ -51,7 +51,7 @@ export default {
       <h5 class="text-center">Scegli un tipo di Pokemon:</h5>
     </header>
 
-    <AppNavigation @pokemon-type-click="FetchPokemons" @submit-search-text="searchFilter()" />
+    <AppNavigation @option-change="FetchPokemons" @submit-search-text="searchFilter($event)" />
 
     <PokemonList />
 
