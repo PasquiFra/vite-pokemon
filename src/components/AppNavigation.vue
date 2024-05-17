@@ -91,7 +91,11 @@ export default {
 <template>
     <nav class="d-flex flex-wrap mb-3">
 
-        <SelectList default-label="Tutti i tipi" :options="imageTypes" @option-change="$emit('option-change', $event)" />
+        <SelectList 
+        default-label="Tutti i tipi" 
+        :options="imageTypes" 
+        @option-change="$emit('option-change', $event)" 
+        class="my-4 p-2"/>
 
         <ul class="d-flex pb-4">
             <li role="button" v-for="image in imageTypes" @click="$emit('option-change', image.type)">
@@ -100,14 +104,16 @@ export default {
             </li>
         </ul>
 
-        <SearchForm placeholder="Cerca un pokemon..." @submit-search-text="$emit('submit-search-text', $event)" />
+        <SearchForm 
+        placeholder="Cerca un pokemon..." 
+        @submit-search-text="$emit('submit-search-text', $event)" 
+        class="my-4"/>
 
     </nav>
 </template>
 
 <style lang="scss" scoped>
 nav {
-    height: 35vh;
     justify-content: center;
 
     ul {

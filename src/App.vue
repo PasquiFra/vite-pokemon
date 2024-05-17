@@ -16,24 +16,16 @@ export default {
     callAxios(endpoint) {
       axios.get(endpoint).then(res => {
         store.pokemons = res.data.docs;
-        console.log(store)
       })
     },
     FetchPokemons(type) {
-      console.log("chiamo...")
-
       const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?eq[type1]=${type}&per=40`;
-
-      console.log(endpoint)
 
       this.callAxios(endpoint)
     },
     searchFilter(text) {
-      console.log("chiamo...", text)
 
       const endpoint = `https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons?q[name]=${text}&per=20`;
-
-      console.log(endpoint)
 
       this.callAxios(endpoint)
     }
